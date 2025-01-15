@@ -1,7 +1,7 @@
 name: terraform initialization
 run-name: terraform install
 on:
- push
+ workflow_dispatch:
 jobs:
  build-job:
   runs-on: ubuntu-latest
