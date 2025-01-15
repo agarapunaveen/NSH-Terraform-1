@@ -44,7 +44,7 @@ jobs:
    #   run: sudo snap install terraform-docs
    - name: plan terraform
      run: terraform plan 
-   - name: apply terraform
+   - name: apply terraforms
      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
      run: terraform apply -auto-approve
  
