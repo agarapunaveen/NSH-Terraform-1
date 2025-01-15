@@ -1,6 +1,9 @@
 name: terraform initialization
 run-name: terraform install
 on:
+ push:
+  branches:
+   - main
  workflow_dispatch:
 jobs:
  build-job:
