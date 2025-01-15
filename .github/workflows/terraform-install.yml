@@ -8,10 +8,19 @@ jobs:
   steps:
    - name: checkout
      uses: actions/checkout@v4.2.2  
+     with:
+        ref: ${{ github.event.pull_request.head.ref }}
    - name: set hashicorp  
      uses: hashicorp/setup-terraform@v2.0.3
      with:
       terraform-version: 5.48.0
+   - name: install terraform docs
+     uses: terraform-docs/gh-actions@v1.3.0
+     with:
+        working-dir: .
+        output-file: README.md
+        output-method: inject
+        git-push: "true"
    - name: configure AWS credential
      uses: aws-actions/configure-aws-credentials@v4
      with:
