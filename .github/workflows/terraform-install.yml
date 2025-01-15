@@ -22,22 +22,12 @@ jobs:
      uses: hashicorp/setup-terraform@v2.0.3
      with:
       terraform-version: 5.48.0
-   # - name: Generate TF Docs
-   #   uses: terraform-docs/gh-actions@v1.3.0
-   #   with:
-   #    working-dir: .  
+   
    - name: configue git
      run: |
       git config --global user.name 'agarapunaveen'
       git config --global user.email 'agarapunaveen@gmail.com'
-   # - name: install terraform docs
-   #   if: ${{ github.event_name == 'pull_request' }}
-   #   uses: terraform-docs/gh-actions@v1.3.0
-   #   with:
-   #      working-dir: .
-   #      output-file: README.md
-   #      output-method: inject
-   #      git-push: "true"
+
    - name: configure AWS credential
      uses: aws-actions/configure-aws-credentials@v4
      with:
@@ -51,15 +41,18 @@ jobs:
    - name: plan terraform
      run: terraform plan 
      
+
    - name: Render terraform docs and push changes back to PR
      uses: terraform-docs/gh-actions@main
      with:
         working-dir: .
         output-file: README.md
         output-method: inject
-        git-push: "true"
+        git-push: "true"    
+
         
    - name: apply terraforms
-     if: ${{ github.event.pull_request.merged }}
+     if: ${{ github.event.pull_request.merged == true }}
      # if: ${{ github.event_name == 'pull_request' &&  github.event.action == 'closed' && github.event.pull_request.merged == true  }}
      run: terraform apply -auto-approve
+
