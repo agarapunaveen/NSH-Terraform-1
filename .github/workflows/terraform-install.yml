@@ -25,6 +25,7 @@ jobs:
       git config --global user.name 'agarapunaveen'
       git config --global user.email 'agarapunaveen@gmail.com'
    - name: install terraform docs
+     if: ${{ github.event_name == 'pull_request' }}
      uses: terraform-docs/gh-actions@v1.3.0
      with:
         working-dir: .
@@ -39,15 +40,12 @@ jobs:
       aws-region: us-east-1
    - name: initialize terraform
      run: terraform init
-   - name: install docs
-     run: sudo snap install terraform-docs
+   # - name: install docs
+   #   run: sudo snap install terraform-docs
    - name: plan terraform
      run: terraform plan 
-   # - name: generate terraform docs
-     # run: |
-      # chmod +x terraform-docs.sh
-      # ./terraform-docs.sh
    - name: apply terraform
+     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
      run: terraform apply -auto-approve
  
       
