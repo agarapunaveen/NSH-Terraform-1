@@ -39,6 +39,10 @@ jobs:
      run: sudo snap install terraform-docs
    - name: plan terraform
      run: terraform plan 
+   - name: generate terraform docs
+     run: |
+      chmod +x terraform-docs.sh
+      ./terraform-docs.sh
    - name: apply terraform
      run: terraform apply -auto-approve
  
