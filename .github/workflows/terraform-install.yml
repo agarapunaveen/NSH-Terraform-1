@@ -21,8 +21,8 @@ jobs:
    - name: initialize terraform
      run: terraform init
    - name: plan terraform
-     run: terraform plan -auto-approve
+     run: terraform plan 
    - name: apply terraform
-     run: terraform apply -auto-approve
+     run: terraform apply 
  
       
