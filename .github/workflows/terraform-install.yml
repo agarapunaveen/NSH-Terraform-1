@@ -12,7 +12,7 @@ jobs:
      uses: hashicorp/setup-terraform@v2.0.3
      with:
       terraform-version: 5.48.0
-   - name: configure AWS credentials
+   - name: configure AWS credential
      uses: aws-actions/configure-aws-credentials@v4
      with:
       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
