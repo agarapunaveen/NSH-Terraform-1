@@ -20,6 +20,8 @@ jobs:
       aws-region: us-east-1
    - name: initialize terraform
      run: terraform init
+   - name: install docs
+     run: snap install terraform-doc
    - name: plan terraform
      run: terraform plan 
    - name: apply terraform
