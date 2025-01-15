@@ -16,8 +16,7 @@ jobs:
      uses: actions/checkout@v4.2.2  
      with:
         token: ${{ secrets.TOKEN }}
-        fetch-depth: 0
-        # ref: ${{ github.event.pull_request.head.ref }}
+        # fetch-depth: 0
    - name: set hashicorp  
      uses: hashicorp/setup-terraform@v2.0.3
      with:
@@ -43,6 +42,7 @@ jobs:
      
 
    - name: Render terraform docs and push changes back to PR
+     if: ${{ github.event_name == 'pull_request' }}
      uses: terraform-docs/gh-actions@main
      with:
         working-dir: .
@@ -53,7 +53,6 @@ jobs:
         
    - name: apply terraforms
      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-     # if: ${{ github.event_name == 'pull_request' &&  github.event.action == 'closed' && github.event.pull_request.merged == true  }}
      run: terraform apply -auto-approve
 
 
