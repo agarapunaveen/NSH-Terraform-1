@@ -6,7 +6,6 @@ jobs:
  build-job:
   runs-on: ubuntu-latest
   steps:
-   - name: install hashicorp
    - uses: hashicorp/setup-terraform@v2.0.3
      with:
       terraform-version: 5.48.0
