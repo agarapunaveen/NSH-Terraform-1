@@ -14,6 +14,10 @@ jobs:
      uses: hashicorp/setup-terraform@v2.0.3
      with:
       terraform-version: 5.48.0
+   - name: configue git
+     run: |
+      git config --global user.name 'agarapunaveen'
+      git config --global user.email 'agarapunaveen@gmail.com'
    - name: install terraform docs
      uses: terraform-docs/gh-actions@v1.3.0
      with:
