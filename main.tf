@@ -20,7 +20,7 @@ provider "aws" {
 
 
 
-resource "aws_instance" "example_server-1" {
+resource "aws_instance" "terraform-server" {
   ami           = "ami-0e2c8caa4b6378d8c"
   instance_type = "t2.micro"
 
