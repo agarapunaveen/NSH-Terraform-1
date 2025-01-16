@@ -42,6 +42,7 @@ jobs:
      
 
    - name: Render terraform docs and push changes back to PR
+     if: ${{ github.event_name == 'pull_request' }}
      uses: terraform-docs/gh-actions@main
      with:
         working-dir: .
