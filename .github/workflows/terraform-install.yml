@@ -3,10 +3,10 @@ run-name: terraform install
 on:
  push:
   branches:
-   - main
+   - test-branch
  pull_request:
   branches:
-   - main
+   - test-branch
  workflow_dispatch:
 jobs:
  build-job:
