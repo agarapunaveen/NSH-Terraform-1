@@ -7,7 +7,6 @@ on:
  pull_request:
   branches:
    - main
- workflow_dispatch:
 jobs:
  build-job:
   runs-on: ubuntu-latest
@@ -39,7 +38,7 @@ jobs:
    # - name: install docs
    #   run: sudo snap install terraform-docs
    - name: plan terraform
-     run: terraform plan 
+     run: terraform plan -out=tfplan
      
 
    - name: Render terraform docs and push changes back to PR
@@ -54,4 +53,4 @@ jobs:
       
    - name: apply terraforms
      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-     run: terraform apply -auto-approve
+     run: terraform apply -auto-approve tfplan
